@@ -53,6 +53,7 @@ public class Driver {
 			LL.searcherByPos((LL.sizegiver()/2));
 		}
 		if(i==5) {
+			System.out.println("Enter Position?");
 			int x = sc.nextInt();
 			LL.searcherByPos(x);
 		}
