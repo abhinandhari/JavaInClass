@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.text.*;
 import java.util.*;
+import JavaObjects.*;
 public class Clock extends JLabel implements Runnable {
     Thread clock;
     String time;
@@ -19,8 +20,10 @@ public class Clock extends JLabel implements Runnable {
                 Date date = cal.getTime();
                 time = formatter.format( date );
                 setText(time);
-                clock.sleep( 1000 );
+                clock.sleep(1000);
             }
-        }catch(Exception e){}
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,e.getClass());
+        }
     }
 }

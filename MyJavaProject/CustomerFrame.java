@@ -7,38 +7,36 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-
+import JavaObjects.*;
+import javax.swing.JOptionPane;
 public class CustomerFrame extends JFrame implements ActionListener {
     JLabel name;
     JTextArea cname;
     JLabel justTexT;
     JLabel wallet;
-    JButton seeCart;
-    JButton seeProducts;
     JButton OK;
-    int money;
     Clock c;
+
     CustomerFrame(){
         super();
         c = new Clock();
         name = new JLabel("Enter your name :");
         cname = new JTextArea();
         justTexT = new JLabel("YOU WANT TO...");
-        money = 500;
         wallet = new JLabel();
         OK = new JButton("OK");
         setTitle("Customer");
-        seeCart = new JButton("Check Cart");
-        seeProducts = new JButton("See Products");
+      //  seeCart = new JButton("Check Cart");
+      //  seeProducts = new JButton("See Products");
         setAll();
         add(name);
         add(cname);
         add(justTexT);
         add(wallet);
         add(OK);
-        add(seeCart);
+     //   add(seeCart);
         add(c);
-        add(seeProducts);
+       // add(seeProducts);
     }    
     private void setAll(){
         setSize(500, 300);
@@ -56,44 +54,30 @@ public class CustomerFrame extends JFrame implements ActionListener {
         justTexT.setVisible(false);
         wallet.setBounds(300,100,90,20);
         wallet.setVisible(false);
-        wallet.setText("Wallet :"+money);
-        seeCart.setBounds(170,160,150,20);
+        wallet.setText("Wallet :");
+        /*seeCart.setBounds(170,160,150,20);
         seeCart.setVisible(false);
-        seeCart.addActionListener(this);
+        seeCart.addActionListener(this);*/ 
         OK.setBounds(220,150,60,20);
         OK.setVisible(true);
         OK.addActionListener(this);
-        seeProducts.setBounds(170,230,150,20);
+        /*seeProducts.setBounds(170,230,150,20);
         seeProducts.setVisible(false);
-        seeProducts.addActionListener(this);
+        seeProducts.addActionListener(this);*/
     }
     public void actionPerformed(ActionEvent e){
         try {
-            File file = new File("log.txt");
+            File file = new File("C:/Users/Abhinand Hari/Desktop/myjavaproject/files/log.txt");
             FileWriter writer = new FileWriter(file,true);
             if(e.getSource()==OK){
-            name.setText(new String("HELLO "+cname.getText()));
-            name.setBounds(40,50,180,20);
-            cname.setVisible(false);
-            OK.setVisible(false);
-            wallet.setVisible(true);
-            justTexT.setVisible(true);
-            seeCart.setVisible(true);
-            seeProducts.setVisible(true);
-            writer.write("Customer "+name.getText()+" HAS ENTERED \n");
+               CustomerW c = new CustomerW(cname.getText());
+               
+            writer.write("Customer "+cname.getText()+" HAS ENTERED \n");
+            dispose();
         }
-        if(e.getSource()==seeCart){
-            Productlist P = new Productlist(2);
-            writer.write("Customer "+name.getText()+"HAS REQUESTED TO SEE THE CART ");
-        }
-        if(e.getSource()==seeProducts){
-            Productlist P = new Productlist(1);
-            writer.write("Customer "+name.getText()+"HAS REQUESTED TO SEE THE CART ");
-        }
-        
         writer.close();
         } catch (Exception ee) {
-            //TODO: handle exception
+            JOptionPane.showMessageDialog(null,ee.getClass());
         }
     }
     

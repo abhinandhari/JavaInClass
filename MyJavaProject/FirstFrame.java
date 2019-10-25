@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import JavaObjects.*;
 import javax.swing.ImageIcon;
 public class FirstFrame extends JFrame implements ActionListener{
    JButton admin;
@@ -28,7 +28,7 @@ public class FirstFrame extends JFrame implements ActionListener{
         //ImageIcon h = new ImageIcon(this.getClass().getResource("anim1.gif"));
         admin.addActionListener(this);
         customer.addActionListener(this);
-        hypno = new JLabel("WELCOME ! ^__^",JLabel.CENTER);
+        hypno = new JLabel("WELCOME !",JLabel.CENTER);
         //hypno = new JLabel(h,JLabel.CENTER);
         add(admin,BorderLayout.WEST);
         add(customer,BorderLayout.EAST);
@@ -45,7 +45,7 @@ public class FirstFrame extends JFrame implements ActionListener{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd/MM/yyyy"); 
         LocalDateTime now = LocalDateTime.now();  
         try{
-        File file = new File("log.txt");
+        File file = new File("C:/Users/Abhinand Hari/Desktop/myjavaproject/files/log.txt");
         FileWriter writer = new FileWriter(file,true);
         writer.write("ADMIN ACCESS REQUESTED - "+formatter.format(now)+"\n");
         writer.close();

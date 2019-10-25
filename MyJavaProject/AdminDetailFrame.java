@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
 import java.io.File;
 import java.io.FileWriter;
+import JavaObjects.*;
 import java.io.IOException;
 public class AdminDetailFrame extends JFrame implements ActionListener{
     JLabel n;
@@ -72,7 +73,7 @@ public class AdminDetailFrame extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         try{
-        File file = new File("log.txt");
+        File file = new File("C:/Users/Abhinand Hari/Desktop/myjavaproject/files/log.txt");
         FileWriter writer = new FileWriter(file,true);
         if(e.getSource()==confirm){
             writer.write("Confirmed Click... ");
@@ -87,7 +88,7 @@ public class AdminDetailFrame extends JFrame implements ActionListener{
                 dispose();
                 AdminPowerFrame A = new AdminPowerFrame();
             }else{
-                JOptionPane.showMessageDialog(null,"ERROR ERROR ERROR");
+                JOptionPane.showMessageDialog(null,"Wrong information!");
                 reset();
                 writer.write("Denied... \n");
             }
